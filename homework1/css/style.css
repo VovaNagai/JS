@@ -1,0 +1,44 @@
+* {outline:none;}
+html {
+    font-size: 62.5%;
+    height: 100%;
+    width: 100vw;
+}
+img {width: 100%; max-width:100%; display: block;}
+h1 {
+    color: #fff;
+    font-size: 3rem;
+    margin: 15px auto;
+}
+body {
+    text-align: center;
+    font: 400 2.4rem 'Arial';
+    background: url('../img/background1.jpg') no-repeat center;
+    background-size: cover;
+    width: 100%;
+}
+#inputSearch {
+    opacity: 0.5;
+    color: #000;
+}
+#search {
+    font-size: 1.8rem;
+    height: 34px;
+    border: none;
+}
+#inputSearch:active, #inputSearch:hover {opacity: 0.7;}
+#info {
+    font-size: 2rem;
+    display: block;
+    /*height: 300px;*/
+    margin: 30px auto;
+    padding: 10px auto;
+    opacity: 0.6;
+    resize: none;
+}
+@media screen and (min-width: 425px) {
+    .lineInput {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
