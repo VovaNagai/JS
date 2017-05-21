@@ -97,7 +97,7 @@
 // console.log(array);
 
 
-function make(obj) {
-    return obj.name.toUpperCase();
-}
-console.log(make({ name: 'oleg' }));
+// function make(obj) {
+//     return obj.name.toUpperCase();
+// }
+// console.log(make({ name: 'oleg' }));
