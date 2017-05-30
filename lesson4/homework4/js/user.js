@@ -18,16 +18,19 @@ console.log(numbersBetween(3, 6)); // 4,5
 console.log(numbersBetween(12, 15)); // 13,14
 console.log(numbersBetween(10, 15)); // 11, 12, 13, 14
 
+//2
+
+
 /*
  3. Напишите функцию которая принимает 1 аргумент - массив
  И возвращает новый массив содержащий типы значений переменных
  */
 
-let a = [1, null, undefined, 'str', {}, [], function() {}];
-function makeTypesArray(a){
+let arr = [1, null, undefined, 'str', {}, [], function() {}];
+function makeTypesArray(arr){
     var out = [];
-    for(var c=0; c<a.length; c++)
-        out[c] = typeof a[c];
+    for(var c=0; c<arr.length; c++)
+        out[c] = typeof arr[c];
     return out;
 }
-console.log(makeTypesArray(a));
+console.log(makeTypesArray(arr));
