@@ -91,7 +91,7 @@ function reverseStrimg(word) {
     var string =  word.split(' ');
     // for (let i=0; i<word.length; i++) {
     //     string[i].reverse().join('');
-    // }
+    // } 
     return string;
 }
 
