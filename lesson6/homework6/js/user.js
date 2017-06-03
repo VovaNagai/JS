@@ -338,18 +338,19 @@ let javaScript = {
   html: 'JavaScript'
 };
 
-// function countLetterA(str) {
-//   var a = 0;
-//   for (var i = 0; i < str.length; i++) {
-//       if ('a' == str.charAt(i).toLowerCase()) {
-//           a++;
-//       }
-//   }
-//     return a;
-// }
+function countLetterA_1(str) {
+  var a = 0;
+  for (var i = 0; i < str.length; i++) {
+      if ('a' == str.charAt(i).toLowerCase()) {
+          a++;
+      }
+  }
+    return a;
+}
+console.log('1.1.1: ' + countLetterA_1(randomString)); // 4
+console.log('1.1.2: ' + countLetterA_1(user.name + javaScript.html)); // 3
 
-
-function countLetterA(str) {
+function countLetterA_2(str) {
     var a = 0;
     Array.from(str).forEach(function(elem) {
         if ('a' === elem.toLowerCase()) {
@@ -359,8 +360,8 @@ function countLetterA(str) {
     return a;
 }
 
-console.log(countLetterA(randomString)); // 4
-console.log(countLetterA(user.name + javaScript.html)); // 3
+console.log('1.2.1: ' + countLetterA_2(randomString)); // 4
+console.log('1.2.2: ' + countLetterA_2(user.name + javaScript.html)); // 3
 
 
 /// ! ! ! ! ! ! ! ! ! ! !
@@ -398,7 +399,7 @@ function reverseEachWord(str, revertString) {
  * переворачиваются в обратном порядке
  * */
 
-
+console.log(`TASK 2 + TASK 3: `);
 console.log(reverseEachWord('You don\'t have to do anything special to begin using the DOM. Different browsers have different implementations of the DOM', true));
 //MOD eht fo snoitatnemelpmi tnereffid evah sresworb tnereffiD .MOD eht gnisu nigeb ot laiceps gnihtyna od ot evah t'nod uoY
 console.log(reverseEachWord('The Document Object Model (DOM) is a programming interface for HTML and XML documents', true));
@@ -430,7 +431,7 @@ function wordCounter(sentence) {
     }
     return word;
 }
-
+console.log(`TASK 4: `);
 console.log(wordCounter('Both Java and Java Script is programming and programming OOPBased Language'));
 /*
  {
@@ -445,7 +446,7 @@ console.log(wordCounter('Both Java and Java Script is programming and programmin
  }
  */
 
-//console.log(wordCounter('asd qwe asd'));
+console.log(wordCounter('asd qwe asd'));
 /*
  {
  asd:2
@@ -453,7 +454,7 @@ console.log(wordCounter('Both Java and Java Script is programming and programmin
  }
  * */
 
-//console.log(wordCounter('url http url www url http'));
+console.log(wordCounter('url http url www url http'));
 
 /*
  {
@@ -465,7 +466,7 @@ console.log(wordCounter('Both Java and Java Script is programming and programmin
 
 
 /*
- * TASK 4
+ * TASK 5
  
  // Функция принимает массив у которого есть свойста _id и Company.
  // верните объект, у которого ключ это _id, а значение Company
@@ -479,7 +480,7 @@ function createHashTags(arr) {
     });
     return newObj;
 }
-
+console.log(`TASK 5: `);
 console.log(createHashTags(listOfCompanys));
 //{"584babb6eeb4137cf14c37a3":"ASIMILINE", 584babb6eeb4137cf14c37a3:'Company2', }
 
@@ -504,6 +505,7 @@ function uniqueElements(arr) {
   return outArr;
 }
 //
+console.log(`@ SUPER TASK 1: `);
 let notUniqArray = [1, 1, 2, 2, 2, 5, 10, 25, 30, 5, 1, 0, 22, 3, 10, 3];
 
 console.log(uniqueElements(notUniqArray)); //1,2,5,10,25,30,0,22,3,
