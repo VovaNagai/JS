@@ -80,6 +80,7 @@ makeCallback(function() {
  * */
 
 var cache = {};
+
 function sum(num) {
   if (num in cache) {
     console.log(cache[num] + ' Значение взято из кэша');
