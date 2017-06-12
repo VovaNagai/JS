@@ -156,7 +156,8 @@ const user = {
         console.log(this.fruits);
     },
     showFriendsFruits: function () {
-        console.log(this.friends);
+        let ffr = this.friends.map(elem => elem.fruits);
+        console.log(ffr.join(', '));
     }
 };
 
