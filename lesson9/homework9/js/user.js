@@ -30,8 +30,8 @@ const user = {
     }
 };
 
-console.log(user.showFruits());
-console.log(user.showFriendsFruits());
+console.log('Classwork: ' + user.showFruits());
+console.log('Classwork: ' + user.showFriendsFruits());
 // // Legolas Task !
 //
 // TASK 1
@@ -99,19 +99,19 @@ developers.forEach((dev, index) => {
  * */
 
 let myObject = {
-    // database: [
-    //     { age: 100, name: 'b' },
-    //     { age: 15, name: 'c' },
-    //     { age: 25, name: 'a' }
-    // ],
-    // myFilter(){
-    //   let filterDataSorts = this.database.forEach
-    // }
+    database: [
+        { age: 100, name: 'b' },
+        { age: 15, name: 'c' },
+        { age: 25, name: 'a' }
+    ],
+    myFilter(term){
+        return this.database.filter(n => n).sort((a, b) => (isNaN(a[term])) ? ((a[term] > b[term]) ? 1 : -1) : ((parseInt(a[term]) > parseInt(b[term])) ? 1 : -1));
+    }
 };
 
 // {age:15, name:'c'}, {age:25, name:'a'} {age:100, name:'b'}
 
-console.log(myObject.myFilter('age'));
+console.warn(myObject.myFilter('age'));
 console.log(myObject.myFilter('name'));
 
 // {age:25, name:a}, {age:100, name: b} ...
@@ -125,7 +125,7 @@ console.log(myObject.myFilter('name'));
  *
  */
 /*
- 1. Переместите 0 в конец массива, остальные числа должны остаться
+ 3.1. Переместите 0 в конец массива, остальные числа должны остаться
  неизменными
  .сoncat();
  example:
@@ -135,48 +135,10 @@ console.log(myObject.myFilter('name'));
  */
 
 let arr1 = [1, false, 2, 0, 3, null, 0, 4, 0, 25];
-
-//Метод счетчика
-function moveZeroToEnd(arr) {
-    var newArray = [],
-        zeroes = 0;
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] === 0) {
-            zeroes++;
-        } else {
-            newArray.push(arr[i]);
-        }
-    }
-    for (var i = 0; i < zeroes; i++) {
-        newArray.push(0);
-    }
-    return newArray;
-}
-
-console.log('1.1: ', moveZeroToEnd(arr1));
-
-//Метод concat + map
-
-let arr2 = [ 0, 1, null, 2, false, 1, 0 ];
-
-function moveZeroToEnd_2(arr) {
-    var newArray = [],
-        zeroes = 0;
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] === 0) {
-            zeroes++;
-        } else {
-            newArray.push(arr[i]);
-        }
-    }
-    newArray = newArray.concat(Array.from({length:zeroes}).map(function(v){return 0;}));
-    return newArray;
-}
-
-console.log('1.2: ', moveZeroToEnd_2(arr2));
-
+let moveZeroToEnd = (arr) => arr.filter(n => (0 === n) ? false : true).concat(arr.filter(n => (0 === n) ? true : false));
+console.log('3.1: ', moveZeroToEnd(arr1));
 /*
- 2. Верните сумму двух найменьших чисел в массиве
+ 3.2. Верните сумму двух найменьших чисел в массиве
 
  [10,20,30,1,31,11,10] => 11
  [-1,0,25] => -1
@@ -186,29 +148,37 @@ console.log('1.2: ', moveZeroToEnd_2(arr2));
  */
 
 let arr = [10,20,30,1,31,11,10];
-// let functionArr = (minNumber) => {
-//
-//     return minNumber.filter(function (elem, index) {
-//
-//         }
-//     });
-//
-// };
+/*
+Array.prototype.min = function(){return Math.min.apply(Math,this);}
+
+let minimalNumber = (arr) => {
+    var arr3x = Array.from(arr).filter( //filter принимает вкачестве параметра ф-цию которая является callback
+         (v) => {
+            if(v !== arr.min())
+                return v;
+        }
+    );
+    return arr.min() + arr3x.min();
+};*/
+let minimalNumber = (a) => (Math.min.apply(Math,a))+(Math.min.apply(Math,a.filter(n => {if(Math.min.apply(Math,a) != n) return n;})));
+
+console.log('2.2: ', minimalNumber([10,20,30,1,31,11,10]));
+
 
 /*
- 3. Напишите функцию которая меняет местами имя и фамилию
+ 3.3. Напишите функцию которая меняет местами имя и фамилию
  nameShuffler('john McClane'); => "McClane john"
  nameShuffler('Arnold Schwarzenegger'); => "Schwarzenegger Arnold"
  nameShuffler('James Bond'); => "Bond James"
  */
 
 let nameShuffler = (arg) => {
-    let pieces = arg.split('');
+    let pieces = arg.split(' ');
     pieces.reverse();
-    return pieces.join('');
+    return pieces.join(' ');
 };
-console.log('3.1: ',nameShuffler('john McClane'));
-console.log('3.2: ',nameShuffler('James Bond'));
+console.log('3.3.1: ',nameShuffler('john McClane'));
+console.log('3.3.2: ',nameShuffler('James Bond'));
 
 /*
  4. Напишите функцию которая принимает массив с именами и возвращает массив
@@ -217,22 +187,9 @@ console.log('3.2: ',nameShuffler('James Bond'));
  capMe(['KARLY', 'DANIEL', 'KELSEY']) // returns ['Karly', 'Daniel', 'Kelsey']
  */
 
-let capMe = (arg) => {
-    var newArr = [];
-    for (var i = 0; i < arg.length; i++) {
-        var c = arg[i].slice(0,1).toUpperCase() + arg[i].slice(1).toLowerCase();
-        newArr.push(c);
-    }
-    return newArr;
-};
+let capMe = (arg) => arg.map(name => name.slice(0,1).toUpperCase() + name.slice(1).toLowerCase());
 
-console.log('4: ',capMe(['jo', 'nelson', 'jurie']));
-
-
-//
-//
-//
-
+console.log('3.4: ' + capMe(['jo', 'nelson', 'jurie']));
 
 ////////@ TODO -- LVL Strong Junior
 /*
@@ -259,10 +216,20 @@ let junior = {};
 // fn.length == arguments.length
 
 function addMethod(object, name, fn) {
-    object[name] = fn;
+    var key = name + ':' + fn.length;
+    object[key] = fn;
+    if('function' != typeof object[name]){
+        object[name] = function(){
+            var call_key = name + ':' + arguments.length;
+            if(call_key in object)
+                object[call_key]();
+            else
+                console.warn(`No method ${name} exists which accepts ${arguments.length} arguments!`);
+        };
+    }
 }
 function newMethodFun() {
-    
+    //
 }
 addMethod(junior, 'ok', function() {
     console.log('zero arguments');
@@ -281,3 +248,4 @@ junior.ok(); //'zero arguments'
 junior.ok(1); //'one arguments'
 junior.ok(1, 2); // 'two arguments'
 junior.ok(1, 2, 3); // 'three arguments'
+junior.ok(1, 2, 3, 4); // No method...!
