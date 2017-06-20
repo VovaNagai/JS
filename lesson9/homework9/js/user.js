@@ -228,6 +228,7 @@ function addMethod(object, name, fn) {
         };
     }
 }
+
 function newMethodFun() {
     //
 }
