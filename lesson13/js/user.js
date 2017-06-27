@@ -67,15 +67,48 @@ class Parent2{
 class Child2 extends Parent2 {
     constructor(name) {
         super();
-        this.name = naime;
+        this.name = name;
     }
 }
 
 var name1 = new Child2('Vova');
 
 //-------------------------------------Таймеры------------------------------------------
-setTimeout(function () {
 
-},1000);
-//setInterval()
-// clearTimeour()
+// setTimeout
+// setInterval
+// clearTimeout
+
+// Стек - это массив, в него можно положить вконец элемент и взять последний элемент
+
+// console.time('start');
+//
+// console.timeEnd('The end');
+
+// function func() {
+//     console.log( 'Привет' );
+// }
+//
+// setTimeout(function () {
+//     console.log('task2');
+// },500);
+// setTimeout(function () {
+//     console.log('task3');
+// },100);
+// setTimeout(func, 1000);
+// // setInterval(func, 1000);
+// clearTimeout(func);
+// let counter =0;
+// setInterval(() => {counter++},500);
+
+//----------------------------- Попытка исключения -----------------------------
+try {
+    if (10 < 9){
+        console.log('Верно');
+    }r
+} catch(error){
+    console.log('Error');
+} finally {
+
+}
+
