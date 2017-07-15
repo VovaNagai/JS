@@ -1,0 +1,46 @@
+* {outline:none;}
+html {font-size:62.5%;}
+img {width: 100%; max-width:100%; display: block;}
+header, main, footer {overflow: hidden;}
+
+#elem {
+    width: 200px;
+    height: 200px;
+    background: red;
+}
+.link {
+    font:2rem/4rem georgia;
+    background: #000;
+    border-radius: .3rem;
+    padding: 3rem;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+
+}
+.link.active {
+    color: black;
+    background: white;
+}
+.ball {
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    border-radius: 50%;
+    background: #000;
+    left: 0;
+    top: calc(100vh - 100px);
+    transition: 2s ease;
+}
+.top {
+    /*top: 0;*/
+    /*transition: all 4s ease;*/
+    left: 100px;
+    position: relative;
+}
+.left {
+    right: 0;
+    transition: all 4s ease;
+    left: 100px;
+    position: relative;
+}

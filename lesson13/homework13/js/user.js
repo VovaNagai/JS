@@ -143,8 +143,9 @@ startTimer();
 //
 class DataBase {
   constructor(query) {
-    this.query = query;
+    this.timerInterval = 5000;
   }
+   query() {}
 }
 //
 const dataBase = new DataBase();

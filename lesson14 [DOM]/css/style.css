@@ -1,0 +1,17 @@
+/** {outline:none;}*/
+html {font-size:62.5%;}
+/*img {width: 100%; max-width:100%; display: block;}*/
+/*header, main, footer {overflow: hidden;}*/
+h1 {
+    color: #00b3ee;
+}
+
+li {
+    color: #2aabd2;
+    border: 1rem dotted red;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+

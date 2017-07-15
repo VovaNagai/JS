@@ -1,0 +1,28 @@
+* {
+    outline: none;
+}
+h1 {
+    text-align: center;
+}
+ul>li {
+    list-style: none;
+}
+label {
+    display: block;
+}
+
+button {
+    display: block;
+    background-color: #999;
+    width: 250px;
+    height: 60px;
+    border: 5px dotted orangered;
+    border-radius: 5px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+button:active {
+    background-color: #e4b9c0;
+    border-color: #00b3ee;
+}
