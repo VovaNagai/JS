@@ -71,12 +71,12 @@ console.group('Задача 4');
 // var helloList = ezjQuery
 //     .add('body') // <body></body>
 //     .add('div') // <body><div></div></body>
-//     .add('ul') // <body><div><ul></ul></div></body>
-//     .add('li', 'Hello') //<body><div><ul><li>Hello</li></ul></div></body>
+//     .add('ol') // <body><div><ol></ol></div></body>
+//     .add('li', 'Hello') //<body><div><ol><li>Hello</li></ol></div></body>
 //     .add('div', 'jj/<>')
 //     .add('p')
 //     .render();
-// console.log(helloList); // <body><div><ul><li>Hello</li></ul></div></body>
+// console.log(helloList); // <body><div><ol><li>Hello</li></ol></div></body>
 // // //  Обратите внимание, что после вызова render создание строки началось сначала
 //
 // var bodyDiv = ezjQuery

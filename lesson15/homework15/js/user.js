@@ -11,31 +11,24 @@
  solution("0123456789abcdefghijklmnop") // false
  */
 
-let solution = (str) =>/[a-z]/m.test(str);
+function solution(str) {
+    let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-console.log(solution('WYYGА')); // false
-// solution("qwertyuioplkjhgfdsazxcvbnm"); // true
-// solution("ejuxggfsts"); // false
-// solution("qpwoeirutyalskdjfhgmznxbcv"); // true
-// solution("qqqqqqqqpwoeirutyallskkdjfhgmmznxbcv"); // true
-// solution("0123456789abcdefghijklmnop"); // false
-
-// const solution = str => {
-//   const abc = 'qazwsxedcrfvtgbyhnujmikolp';
-//   const abcSorted = sortString(abc);
-//   const newStrSorted = sortString(str);
-//   return abcSorted === newStrSorted;
-// };
-//
-// const sortString = str => {
-//   return str
-//       .split('')
-//       .filter((elem, index, arr) => {
-//         return arr.indexOf(elem) == index;
-//       })
-//       .sort((a, b) => a - b)
-//       .join('');
-// };
+    for (let i = 0; i < alphabet.length; i++) {
+        if (str.indexOf(alphabet[i]) >= 0) {
+            continue
+        } else {
+            return false
+        }
+    }
+    return true
+}
+solution('wyyga'); // false
+solution('qwertyuioplkjhgfdsazxcvbnm'); // true
+solution('ejuxggfsts'); // false
+solution('qpwoeirutyalskdjfhgmznxbcv'); // true
+solution('qqqqqqqqpwoeirutyalskdjfhgmznxbcv'); // true
+solution('0123456789abcdefghijklmnop'); // false
 
 /*
  2. Напишите функция которая преобразовывает / открывает
@@ -56,16 +49,100 @@ console.log(solution('WYYGА')); // false
 //#2 arr == [2, [ {a: "b"}, { c: 'd' } ] ] flattenedArray = [2] + flatten == [{a: "b"}, { c: 'd' }]
 //#3 arr == [ {a: "b"}, { c: 'd' } ] flattenedArray = [{a: "b"}, { c: 'd' }]
 //#
-const flatten = arr =>
-    arr.reduce((flattenedArray, elem) => {
-      return !Array.isArray(elem)
-          ? flattenedArray.concat(elem)
-          : flattenedArray.concat(flatten(elem));
-    }, []);
-// [1]
+function arrOpen(array, outArray = []) {
+    array.map((elem, i) => {
+        if (Array.isArray(elem)) {
+            open(elem, outArray);
+        } else {
+            outArray.push(elem);
+        }
+    });
+    return (outArray);
+}
 //
-
+//console.log(arrOpen([1, [2, [{ a: "b" }]]]);
 /*
  Виртуализировать таблицу, сделать рендер всей таблицы через JavaScript.
  по phone book
  */
+
+let users = [{
+        name: 'Vova',
+        lastName: 'Boom',
+        mobilPhone: '+(380)-99-0000388',
+    },
+    {
+        name: 'Valera',
+        lastName: 'Leroy',
+        mobilPhone: '+(380)-99-0000388',
+    },
+    {
+        name: 'Victor',
+        lastName: 'Rak',
+        mobilPhone: '+(380)-99-0000388',
+    },
+    {
+        name: 'Roma',
+        lastname: 'Lesovoy',
+        mobilPhone: '+(380)-99-0000388',
+    }];
+
+class phoneBook {
+    constructor(column1, column2, column3) {
+        this.tb = [column1, column2, column3];
+        this.users = users;
+    }
+
+    new(elemName) {
+        return document.createElement(elemName);
+    }
+
+    createTableHeader(table) {
+        const thead = this.new('thead');
+        const tr = this.new('tr');
+        table.append(thead);
+        thead.append(tr);
+        this.tb.forEach(el => {
+            const th = this.new('th');
+            tr.append(th);
+            th.textContent = el;
+        })
+    }
+
+    createTableBody(table) {
+        const tbody = this.new('tbody');
+        table.append(tbody);
+        this.users.forEach(el => {
+            let user = el;
+            const tr = this.new('tr');
+            tbody.append(tr);
+
+            for (let key in user) {
+                const td = this.new('td');
+                tr.append(td);
+                td.textContent = user[key];
+            }
+        })
+    }
+
+    render() {
+        const body = document.body;
+        const main = this.new('main');
+        const container = this.new('div');
+        const table = this.new('table');
+
+        container.classList.add('container');
+        table.classList.add('table', 'table-hover', 'contacts');
+
+        body.append(main);
+        main.append(container);
+        container.append(table);
+        this.createTableHeader(table);
+        this.createTableBody(table);
+    }
+}
+
+let phone = new phoneBook('Name', 'Last Name', 'mobilPhone');
+
+phone.render();
+

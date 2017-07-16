@@ -27,7 +27,7 @@ h1.textContent = 'HELLO';
 
 // let create = tag => document.createElement(tag);
 //
-// let ul = create('ul');
+// let ol = create('ol');
 // let li1 = create('li');
 // li1.textContent = 'JavaScript';
 // let li2 = create('li');
@@ -35,15 +35,15 @@ h1.textContent = 'HELLO';
 // let li3 = create('li');
 // li3.textContent = 'Node.js';
 //
-// ul.appendChild(li1);
-// ul.appendChild(li2);
-// ul.appendChild(li3);
+// ol.appendChild(li1);
+// ol.appendChild(li2);
+// ol.appendChild(li3);
 //
 // document.body.appendChild(h1);
-// document.body.appendChild(ul);
+// document.body.appendChild(ol);
 
 var info = ['JavaScript', 'React', 'Node.js'];
-const ul2 = document.createElement('ul');
+const ul2 = document.createElement('ol');
 
 info.forEach(elem => {
     const li = document.createElement('li');

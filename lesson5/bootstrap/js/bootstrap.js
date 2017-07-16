@@ -1641,7 +1641,7 @@ if (typeof jQuery === 'undefined') {
 
   Tab.prototype.show = function () {
     var $this    = this.element
-    var $ul      = $this.closest('ul:not(.dropdown-menu)')
+    var $ul      = $this.closest('ol:not(.dropdown-menu)')
     var selector = $this.data('target')
 
     if (!selector) {
