@@ -12,10 +12,10 @@
  */
 
 function solution(str) {
-    let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    let alph = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-    for (let i = 0; i < alphabet.length; i++) {
-        if (str.indexOf(alphabet[i]) >= 0) {
+    for (let i = 0; i < alph.length; i++) {
+        if (str.indexOf(alph[i]) >= 0) {
             continue
         } else {
             return false
@@ -131,9 +131,19 @@ class phoneBook {
         const container = this.new('div');
         const table = this.new('table');
 
+        const h1 = this.new('h1');
+        h1.textContent = 'Phone Book';
+
+        let input = this.new('input');
+        // input.setAttribute('id');
+        // input.setAttribute('ser');
+        input.setAttribute('type', 'text');
+        input.setAttribute('placeholder', 'search');
+
         container.classList.add('container');
         table.classList.add('table', 'table-hover', 'contacts');
-
+        body.appendChild(h1);
+        body.appendChild(input);
         body.append(main);
         main.append(container);
         container.append(table);
