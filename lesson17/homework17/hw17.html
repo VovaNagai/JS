@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hw17</title>
+</head>
+<body>
+<main>
+    <ul class="ec-carousel">
+        <li style="display: none"><img src="img/img1.jpg" alt="1"></li>
+        <li style="display: block"><img src="img/img2.jpg" alt="2"></li>
+        <li style="display: none"><img src="img/img3.jpg" alt="3"></li>
+    </ul>
+    <button class="ec-left"><=</button>
+    <button class="ec-right">=></button>
+</main>
+<script src="./js/hw17.js"></script>
+<script>
+    ECSlider.start({ activeElementIndex: 1, sliderTagName: 'ec-carousel' })
+</script>
+</body>
+</html>
