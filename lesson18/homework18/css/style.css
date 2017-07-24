@@ -1,0 +1,11 @@
+head {
+    font-size: 62.5%;
+}
+tbody {
+    margin: 0;
+}
+td {
+    border: 1px solid #000;
+    width:calc(20vw);
+    height:calc(20vh - ((.2rem) + .4rem));
+}

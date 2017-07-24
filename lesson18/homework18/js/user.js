@@ -13,7 +13,17 @@
 
  */
 
+const solution = arr => {
+    let myArr = arr.join('').match(/[\w\s]/g).join('').split(' ');
+    let wordLength = myArr.reduce(function (sum, elem) {
+            return sum += elem.length;
+        }, 0) / myArr.length;
+    return myArr.filter(function (elem) { return elem.length > wordLength });
+};
 
+console.log(solution(["This is a sample string"]));  //["This" "sample" "string"]
+console.log(solution(["Do, do, do, do... do it!"])); //  []
+console.log(solution(["Some another sample"])); // ["another" "sample"] 
 /*
 
  Подготовка к занятию в пятницу.
@@ -53,6 +63,19 @@
 
 
  */
+
+let elements = document.querySelectorAll('td');
+let newArr = [...elements];
+let tbody = document.querySelector('tbody');
+tbody.addEventListener('click', elem => {
+    let unit = elem.target;
+    if (unit.tagName === 'TD') {
+        let index = newArr.indexOf(unit);
+        let activeIndex = newArr.length - 1 - index;
+        newArr[activeIndex].style.backgroundColor = 'red';
+    }
+});
+
 // @SUPER-FrontEnd
 /*
 
