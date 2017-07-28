@@ -23,34 +23,77 @@ class KeypadMain {
 		setTimeout(function(){
 			Array.from(document.getElementsByTagName('button')).forEach(e => {
 				if('undefined' != typeof e.className && 'key' == e.className && e.innerHTML.match(/^[\d*#]+$/)){
-					e.onclick = function(){
-						Array.from(document.getElementsByTagName('span')).forEach(f => {
-							if('undefined' != typeof f.className && 'numbers' == f.className){
-								f.innerHTML += e.innerHTML;
-							}
-						});
-					};
+					e.onclick = function(){inputNum(e.innerHTML);}
 				}
 			});
 			Array.from(document.getElementsByTagName('span')).forEach(f => {
 				if('undefined' != typeof f.className && -1 !== f.className.indexOf('glyphicon-circle-arrow-left')){
-					f.onclick = function(){
-						Array.from(document.getElementsByTagName('span')).forEach(g => {
-							if('undefined' != typeof g.className && 'numbers' == g.className){
-								g.innerHTML = g.innerHTML.slice(0,-1);
-							}
-						});
-					};
+					f.onclick = function(){trimNum();};
 				}
 			});
 		},0);
 	}
 }
 
-const xh = new KeypadHeader();
-const xm = new KeypadMain();
-const xf = new KeypadFooter();
 
-xh.render();
-xm.render();
-xf.render();
+document.body.addEventListener('keydown', n => {
+	if ((n.keyCode >=48 && n.keyCode <=57) || n.keyCode == 42 || n.keyCode == 51) {
+		inputNum(n.key);
+	} else if (n.keyCode == 8) {
+		trimNum();
+	}
+});
+
+function inputNum(char) {
+	Array.from(document.getElementsByTagName('span')).forEach(f => {
+		if('undefined' != typeof f.className && 'numbers' == f.className){
+			if(7 <= f.innerHTML.length && !isNaN(f.innerHTML) && !isNaN(char)){
+				f.innerHTML = '('+f.innerHTML.slice(0,3)+')-'+f.innerHTML.slice(3,6)+'-'+f.innerHTML.slice(6,7);
+			} else if(!f.innerHTML.match(/^\(\d{3}\)\-\d{3}\-\d{2}\-\d{2}$/) && isNaN(f.innerHTML) && isNaN(char)){
+				f.innerHTML = f.innerHTML.replace(/(\(|\)|\-)/g,'');
+			} else if(f.innerHTML.match(/^\(\d{3}\)\-\d{3}\-\d{2}$/) && !isNaN(char)) {
+				f.innerHTML += '-';
+			} else if(f.innerHTML.match(/^\(\d{3}\)\-\d{3}\-\d{2}\-\d{2}$/) && !isNaN(char)) {
+				f.innerHTML += ' ';
+			} else if(f.innerHTML.match(/^\(\d{3}\)\-\d{3}\-\d{2}\-\d{2}/) && f.innerHTML.length > 23){
+				return;
+			}
+			f.innerHTML += char;
+		}
+	});
+}
+function trimNum(){
+	Array.from(document.getElementsByTagName('span')).forEach(g => {
+		if('undefined' != typeof g.className && 'numbers' == g.className){
+			g.innerHTML = g.innerHTML.slice(0,-1);
+		}
+	});
+}
+
+
+
+class Keypad {
+	constructor(){
+		this._header = new KeypadHeader();
+		this._main = new KeypadMain();
+		this._footer = new KeypadFooter();
+	}
+	render(){
+		this._header.render();
+		this._main.render();
+		this._footer.render();
+	}
+	header() {
+		this.header.render();
+	}
+	main() {
+		this.main.render();
+	}
+	footer() {
+		this.footer.render();
+	}
+}
+
+const thisPage = new Keypad();
+
+thisPage.render();
